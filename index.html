@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정지용 | Dark Aesthetic</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lora:wght@400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #fafafa;
+            --accent-violet: #000000;
+            --accent-blue: #000000;
+            --accent-pink: #000000;
+            --accent-green: #000000;
+            --text-primary: #000000;
+            --text-secondary: #333333;
+            --text-muted: #666666;
+            --border-color: #d4d4d4;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: #ffffff;
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+            letter-spacing: -0.3px;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.05), transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.05), transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, var(--accent-violet), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(139, 92, 246, 0.1);
+                filter: drop-shadow(0 0 15px rgba(139, 92, 246, 0.2));
+            }
+            50% {
+                text-shadow: 0 0 40px rgba(139, 92, 246, 0.6);
+                filter: drop-shadow(0 0 25px rgba(139, 92, 246, 0.4));
+            }
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-btn {
+            background: none;
+            border: 2px solid var(--accent-violet);
+            cursor: pointer;
+            font-size: 1.3rem;
+            padding: 0.5rem 1rem;
+            color: var(--accent-violet);
+            transition: all 0.3s ease;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.1);
+        }
+
+        .nav-btn:hover {
+            background: rgba(139, 92, 246, 0.2);
+            border-color: var(--accent-pink);
+            color: var(--accent-pink);
+            box-shadow: 0 0 25px rgba(236, 72, 153, 0.5);
+            transform: scale(1.15);
+        }
+
+        .lang-toggle {
+            display: flex;
+            gap: 0;
+            border: 2px solid var(--accent-violet);
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.1);
+        }
+
+        .lang-toggle button {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            color: var(--accent-violet);
+            font-family: 'Lora', serif;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .lang-toggle button.active {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.4), rgba(236, 72, 153, 0.3));
+            color: var(--accent-pink);
+            box-shadow: inset 0 0 10px rgba(236, 72, 153, 0.3);
+        }
+
+        .lang-toggle button:hover {
+            background: rgba(139, 92, 246, 0.15);
+            color: var(--accent-pink);
+        }
+
+        main {
+            margin-top: 90px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            text-align: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            font-size: 6.5rem;
+            font-weight: 900;
+            letter-spacing: 5px;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--accent-violet), var(--accent-pink), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            animation: slideInDown 1s ease-out, textGlow 3s ease-in-out infinite;
+            text-shadow: 0 0 80px rgba(139, 92, 246, 0.4);
+            transform: scaleY(1.05);
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes textGlow {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.4)); }
+            50% { filter: drop-shadow(0 0 40px rgba(236, 72, 153, 0.6)); }
+        }
+
+        .hero-title {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            animation: slideInUp 1s ease-out 0.2s both, pulse 2.5s ease-in-out 1s infinite;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .hero-description {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 2;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: slideInUp 1s ease-out 0.4s both;
+            background: rgba(139, 92, 246, 0.08);
+            padding: 2.5rem;
+            border: 2px solid var(--accent-violet);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+
+        .hero-description:hover {
+            border-color: var(--accent-pink);
+            background: rgba(236, 72, 153, 0.12);
+            box-shadow: 0 0 30px rgba(236, 72, 153, 0.2);
+        }
+
+        .cta-btn {
+            padding: 1.2rem 2.8rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: 2px solid var(--accent-violet);
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.1));
+            color: var(--accent-violet);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-family: 'Lora', serif;
+            border-radius: 8px;
+            animation: slideInUp 1s ease-out 0.6s both;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .cta-btn:hover::before {
+            left: 100%;
+        }
+
+        .cta-btn:hover {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.25), rgba(139, 92, 246, 0.2));
+            border-color: var(--accent-pink);
+            color: var(--accent-pink);
+            box-shadow: 0 0 40px rgba(236, 72, 153, 0.5);
+            transform: translateY(-3px);
+        }
+
+        /* Sections */
+        section {
+            padding: 8rem 2rem;
+            position: relative;
+            animation: fadeIn 0.8s ease;
+            margin-bottom: 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section h2 {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--accent-violet), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 150px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-violet), var(--accent-pink), transparent);
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+        }
+
+        .section-subtitle {
+            font-size: 1.15rem;
+            color: var(--accent-blue);
+            margin-bottom: 4rem;
+            margin-top: 1.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: pulse 3s ease-in-out infinite;
+            font-weight: 500;
+        }
+
+        /* Content Blocks */
+        .content-block {
+            margin-bottom: 4rem;
+            padding: 4rem;
+            background: #ffffff;
+            border: 1px solid #d4d4d4;
+            border-radius: 0;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .content-block::before {
+            content: none;
+        }
+
+        .content-block:hover::before {
+            content: none;
+        }
+
+        .content-block:hover {
+            border-color: #000000;
+            background: #ffffff;
+            box-shadow: none;
+            transform: none;
+        }
+
+        .content-block h3 {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+            font-weight: 700;
+        }
+
+        .content-text {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 2;
+            position: relative;
+            z-index: 2;
+        }
+
+        .highlight {
+            color: var(--accent-pink);
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(236, 72, 153, 0.3);
+        }
+
+        /* Quote */
+        .quote {
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(0, 212, 255, 0.06));
+            border-left: 4px solid var(--accent-violet);
+            border-radius: 8px;
+            margin: 2rem 0;
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--text-muted);
+            line-height: 2;
+            position: relative;
+            padding-left: 3.5rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.15);
+            animation: slideInLeft 0.8s ease;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .quote::before {
+            content: '"';
+            position: absolute;
+            left: -10px;
+            top: -30px;
+            font-size: 5rem;
+            color: var(--accent-violet);
+            opacity: 0.15;
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .card {
+            padding: 3.5rem;
+            background: #ffffff;
+            border: 1px solid #d4d4d4;
+            border-radius: 0;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(0, 212, 255, 0.1));
+            transition: top 0.5s ease;
+            z-index: 1;
+        }
+
+        .card:hover::before {
+            top: 0;
+        }
+
+        .card:hover {
+            border-color: var(--accent-pink);
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(139, 92, 246, 0.1));
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 15px 50px rgba(236, 72, 153, 0.3);
+        }
+
+        .card h3 {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(135deg, var(--accent-violet), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+            font-weight: 700;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            line-height: 1.9;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.12), rgba(236, 72, 153, 0.08));
+            border: 2px solid var(--accent-violet);
+            text-align: center;
+            border-radius: 12px;
+            padding: 5rem 2rem;
+            margin-top: 4rem;
+            transition: all 0.5s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 50px rgba(139, 92, 246, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.2), transparent);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        .contact-section:hover {
+            border-color: var(--accent-pink);
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(139, 92, 246, 0.1));
+            box-shadow: 0 0 80px rgba(236, 72, 153, 0.3);
+        }
+
+        .contact-section h2 {
+            color: var(--accent-violet);
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-section h2::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .contact-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin: 2rem 0;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-email {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 2rem 0;
+            background: linear-gradient(135deg, var(--accent-violet), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+            animation: textGlow 3s ease-in-out infinite;
+        }
+
+        .contact-btn {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(236, 72, 153, 0.15));
+            color: var(--accent-violet);
+            padding: 0.9rem 2rem;
+            border: 2px solid var(--accent-violet);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: 'Lora', serif;
+            font-size: 0.95rem;
+            margin: 0.7rem;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.1);
+        }
+
+        .contact-btn:hover {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.3), rgba(139, 92, 246, 0.25));
+            border-color: var(--accent-pink);
+            color: var(--accent-pink);
+            box-shadow: 0 0 40px rgba(236, 72, 153, 0.5);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--text-muted);
+            border-top: 2px solid var(--accent-violet);
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            background: linear-gradient(180deg, transparent, rgba(139, 92, 246, 0.05));
+            box-shadow: 0 -8px 32px rgba(139, 92, 246, 0.1);
+        }
+
+        /* Language Switching */
+        [data-lang="en"] {
+            display: none;
+        }
+
+        body.lang-en [data-lang="ko"] {
+            display: none;
+        }
+
+        body.lang-en [data-lang="en"] {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            section h2 {
+                font-size: 2.2rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .fade-in.visible {
+            animation: fadeIn 0.8s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-logo">JY</div>
+        <div class="nav-controls">
+            <div class="lang-toggle">
+                <button class="lang-btn active" data-lang="ko">KO</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+            <button class="nav-btn" id="theme-toggle">🌙</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <h1>정지용</h1>
+
+                <p class="hero-title" data-lang="ko">생각과 관찰의 인문학</p>
+                <p class="hero-title" data-lang="en" style="display: none;">The Humanities of Thought and Observation</p>
+
+                <p class="hero-description" data-lang="ko">
+                    일상의 틈새에서 의미를 발견한다.
+                    밤하늘의 별들과 대화한다.
+                    항상 생각하고, 질문하고, 탐구한다.
+                </p>
+
+                <p class="hero-description" data-lang="en" style="display: none;">
+                    One who finds meaning in small things.
+                    One who observes the starlight of the night sky.
+                    One who thinks, questions, and explores endlessly.
+                </p>
+
+                <a href="#about" class="cta-btn" data-lang="ko">더 알아보기</a>
+                <a href="#about" class="cta-btn" data-lang="en" style="display: none;">Discover More</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="container">
+            <h2 data-lang="ko">소개</h2>
+            <h2 data-lang="en" style="display: none;">About</h2>
+            <p class="section-subtitle" data-lang="ko">어떻게 생각하고, 어떻게 행동하는가</p>
+            <p class="section-subtitle" data-lang="en" style="display: none;">How I Think & How I Act</p>
+
+            <div class="content-block">
+                <h3 data-lang="ko">🌙 밤의 관찰자</h3>
+                <h3 data-lang="en" style="display: none;">🌙 Observer of the Night</h3>
+                <p class="content-text" data-lang="ko">
+                    해가 지고 세상이 잠들 때, 내 생각도 가장 선명해진다.
+                    밤은 단순한 시간이 아니라 나만의 우주다.
+                    그 속에서 나는 <span class="highlight">가장 자유로워지고, 가장 나 자신이</span> 된다.
+                </p>
+                <p class="content-text" data-lang="en" style="display: none;">
+                    When the sun sets and the world grows quiet, my mind becomes clearest.
+                    Night is not time to me, but a universe.
+                    There, I become <span class="highlight">most creative, most myself.</span>
+                </p>
+            </div>
+
+            <div class="content-block">
+                <h3 data-lang="ko">📚 이야기의 수집가</h3>
+                <h3 data-lang="en" style="display: none;">📚 Collector of Stories</h3>
+                <p class="content-text" data-lang="ko">
+                    누군가의 이야기는 그 사람 전체를 말해준다.
+                    <span class="highlight">어떤 꿈을 꾸는지, 무엇을 두려워하는지, 무엇에 행복해하는지</span>.
+                    나는 이 이야기들을 수집하면서, 동시에 나 자신을 발견한다.
+                </p>
+                <p class="content-text" data-lang="en" style="display: none;">
+                    In someone's story lies their entire universe.
+                    <span class="highlight">What they dream of, what they fear, what makes them happy.</span>
+                    I collect these stories and find myself within them.
+                </p>
+            </div>
+
+            <div class="content-block">
+                <h3 data-lang="ko">🎨 창의적 사고가</h3>
+                <h3 data-lang="en" style="display: none;">🎨 Creative Thinker</h3>
+                <p class="content-text" data-lang="ko">
+                    나는 세상을 다양한 각도에서 본다.
+                    같은 것도 다르게 접근하고, 문제도 <span class="highlight">비틀린 방식으로</span> 푼다.
+                    이는 때로 복잡하지만, 그 덕분에 다른 이들이 놓치는 가능성들을 찾을 수 있다.
+                </p>
+                <p class="content-text" data-lang="en" style="display: none;">
+                    I see the world from multiple angles.
+                    I approach same things differently, finding <span class="highlight">non-linear solutions.</span>
+                    This thinking can be complex, but it allows me to discover
+                    possibilities others might miss.
+                </p>
+            </div>
+
+            <div class="content-block">
+                <h3 data-lang="ko">🔄 끊임없는 학습자</h3>
+                <h3 data-lang="en" style="display: none;">🔄 Perpetual Learner</h3>
+                <p class="content-text" data-lang="ko">
+                    모르는 것이 있으면 불안하다.
+                    그래서 항상 배운다. <span class="highlight">새로운 각도, 새로운 방식, 새로운 사유</span>.
+                    세상은 무한하고 배울 것들도 끝이 없다는 걸 알기에,
+                    호기심을 잃지 않으려 끊임없이 노력한다.
+                </p>
+                <p class="content-text" data-lang="en" style="display: none;">
+                    I'm uncomfortable when I don't know something.
+                    So I keep learning. <span class="highlight">New perspectives, new ways, new thoughts.</span>
+                    Knowing the world is vast and infinitely more to learn,
+                    I try to never lose my curiosity.
+                </p>
+            </div>
+
+            <div class="quote" data-lang="ko">
+                INTP는 뇌가 결코 멈추지 않는다는 뜻이다.
+                끊임없이 분석하고, 연결하고, 의문 낸다.
+            </div>
+
+            <div class="quote" data-lang="en" style="display: none;">
+                Being INTP means my brain never stops working.
+                Always analyzing, connecting, questioning something.
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="container">
+            <h2 data-lang="ko">경험과 활동</h2>
+            <h2 data-lang="en" style="display: none;">Experience & Activities</h2>
+            <p class="section-subtitle" data-lang="ko">지금까지 쌓아온 것들</p>
+            <p class="section-subtitle" data-lang="en" style="display: none;">What I've Built So Far</p>
+
+            <div class="content-block">
+                <h3 data-lang="ko">💼 AI 및 웹 기술 학습</h3>
+                <h3 data-lang="en" style="display: none;">💼 AI & Web Technology Learning</h3>
+                <p class="content-text" data-lang="ko">
+                    2024년부터 AI 시대의 기술을 체계적으로 학습 중입니다.
+                    HTML, CSS, JavaScript부터 시작해 현대적인 웹 기술과 AI 활용법을 탐구하고 있습니다.
+                    각 프로젝트마다 새로운 관점을 시도하며 성장해 나가고 있습니다.
+                </p>
+            </div>
+
+            <div class="content-block">
+                <h3 data-lang="ko">🔬 문제 해결 및 분석</h3>
+                <h3 data-lang="en" style="display: none;">🔬 Problem Solving & Analysis</h3>
+                <p class="content-text" data-lang="ko">
+                    물리학적 사고로 복잡한 문제를 단순화하고,
+                    창의적인 접근으로 새로운 솔루션을 찾아내는 데 집중합니다.
+                    데이터와 직관의 균형을 맞추며 최선의 답을 모색합니다.
+                </p>
+            </div>
+
+            <div class="content-block">
+                <h3 data-lang="ko">🎓 지속적인 자기개발</h3>
+                <h3 data-lang="en" style="display: none;">🎓 Continuous Self-Development</h3>
+                <p class="content-text" data-lang="ko">
+                    온라인 강의, 기술 문서, 커뮤니티를 통해 끊임없이 배우고 있습니다.
+                    새로운 기술 트렌드를 따라가며, 기초부터 고급까지 폭넓게 이해하려 노력합니다.
+                    배움 자체를 즐기는 자세를 유지합니다.
+                </p>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="container">
+            <h2 data-lang="ko">핵심 역량</h2>
+            <h2 data-lang="en" style="display: none;">Core Competencies</h2>
+            <p class="section-subtitle" data-lang="ko">무엇을 할 수 있는가</p>
+            <p class="section-subtitle" data-lang="en" style="display: none;">What I Can Do</p>
+
+            <div class="grid">
+                <div class="card">
+                    <h3 data-lang="ko">🌐 웹 개발</h3>
+                    <h3 data-lang="en" style="display: none;">🌐 Web Development</h3>
+                    <p data-lang="ko">
+                        HTML, CSS, JavaScript로 반응형 웹사이트를 설계·구현합니다. 사용자 경험과 미적 가치를 동시에 추구합니다.
+                    </p>
+                    <p data-lang="en" style="display: none;">
+                        Design and implement responsive websites. Balance user experience with aesthetic value.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3 data-lang="ko">🤖 AI 활용</h3>
+                    <h3 data-lang="en" style="display: none;">🤖 AI Application</h3>
+                    <p data-lang="ko">
+                        AI 도구를 창의적 파트너로 활용하여 효율성을 높이고 새로운 솔루션을 탐색합니다.
+                    </p>
+                    <p data-lang="en" style="display: none;">
+                        Leverage AI as a creative partner to enhance efficiency and explore new solutions.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3 data-lang="ko">📊 데이터 분석</h3>
+                    <h3 data-lang="en" style="display: none;">📊 Data Analysis</h3>
+                    <p data-lang="ko">
+                        데이터 속 의미를 찾아내고 시각화하여 인사이트를 도출합니다.
+                    </p>
+                    <p data-lang="en" style="display: none;">
+                        Extract meaning from data and derive actionable insights through visualization.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3 data-lang="ko">🎨 UX/UI 설계</h3>
+                    <h3 data-lang="en" style="display: none;">🎨 UX/UI Design</h3>
+                    <p data-lang="ko">
+                        사용자 중심의 직관적이고 아름다운 인터페이스를 설계합니다.
+                    </p>
+                    <p data-lang="en" style="display: none;">
+                        Create intuitive and beautiful user-centered interfaces and experiences.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="container">
+            <h2 data-lang="ko">작업과 프로젝트</h2>
+            <h2 data-lang="en" style="display: none;">Work & Projects</h2>
+            <p class="section-subtitle" data-lang="ko">실제로 만들고 배운 것들</p>
+            <p class="section-subtitle" data-lang="en" style="display: none;">What I've Built & Learned</p>
+
+            <div class="content-block">
+                <h3 data-lang="ko">이 포트폴리오 페이지</h3>
+                <h3 data-lang="en" style="display: none;">This Portfolio Page</h3>
+                <p class="content-text" data-lang="ko">
+                    <strong>도전:</strong> 창의성과 기술을 모두 보여주는 자기소개 페이지 제작<br>
+                    <strong>해결:</strong> 다크 에스더틱 디자인, 복잡한 애니메이션, 다국어 지원, 다크모드 구현<br>
+                    <strong>결과:</strong> 2026 포트폴리오 트렌드를 반영한 생동감 있는 페이지 완성
+                </p>
+            </div>
+
+            <div class="content-block">
+                <h3 data-lang="ko">AI를 활용한 창의적 문제 해결</h3>
+                <h3 data-lang="en" style="display: none;">Creative Problem-Solving with AI</h3>
+                <p class="content-text" data-lang="ko">
+                    <strong>도전:</strong> AI 기술을 단순 도구가 아닌 창의성의 파트너로 활용<br>
+                    <strong>해결:</strong> 다양한 AI 도구들을 실험하고 최적의 활용법 개발<br>
+                    <strong>결과:</strong> 효율성과 창의성의 균형을 맞춘 워크플로우 확립
+                </p>
+            </div>
+
+            <div class="content-block">
+                <h3 data-lang="ko">웹 기술 학습 프로젝트</h3>
+                <h3 data-lang="en" style="display: none;">Web Technology Learning Projects</h3>
+                <p class="content-text" data-lang="ko">
+                    <strong>도전:</strong> 웹 개발의 전체 스택 이해하기<br>
+                    <strong>해결:</strong> HTML/CSS/JavaScript 기초부터 고급 레이아웃까지 단계별 학습<br>
+                    <strong>결과:</strong> 직관적이면서도 기술적으로 정교한 웹사이트 구현 능력 습득
+                </p>
+            </div>
+        </section>
+
+        <!-- What I Think About -->
+        <section class="container">
+            <h2 data-lang="ko">생각의 궤도</h2>
+            <h2 data-lang="en" style="display: none;">Thought Orbits</h2>
+            <p class="section-subtitle" data-lang="ko">끊임없이 반복되는 질문들</p>
+            <p class="section-subtitle" data-lang="en" style="display: none;">Questions That Never Stop</p>
+
+            <div class="grid">
+                <div class="card">
+                    <h3 data-lang="ko">❓ 모순</h3>
+                    <h3 data-lang="en" style="display: none;">❓ Contradictions</h3>
+                    <p data-lang="ko">
+                        자유를 갈구하면서
+                        동시에 구속을 원한다.
+                        <br><br>
+                        이것은 약함인가,
+                        아니면 인간의 본질인가?
+                    </p>
+                    <p data-lang="en" style="display: none;">
+                        Why do we seek freedom
+                        yet find constraints?
+                        <br><br>
+                        Is this weakness
+                        or human nature?
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3 data-lang="ko">⏰ 시간</h3>
+                    <h3 data-lang="en" style="display: none;">⏰ Time</h3>
+                    <p data-lang="ko">
+                        어떤 순간은 영원이고
+                        어떤 나날은 한순간이다.
+                        <br><br>
+                        우리는 정말
+                        시간을 이해하는가?
+                    </p>
+                    <p data-lang="en" style="display: none;">
+                        Some moments feel eternal,
+                        some days pass in a blink.
+                        <br><br>
+                        Can we truly understand
+                        time itself?
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3 data-lang="ko">🌍 연결</h3>
+                    <h3 data-lang="en" style="display: none;">🌍 Connection</h3>
+                    <p data-lang="ko">
+                        내 작은 선택이
+                        누군가의 삶을 바꿀까?
+                        <br><br>
+                        우리는 모두
+                        하나로 연결되어 있을까?
+                    </p>
+                    <p data-lang="en" style="display: none;">
+                        Can my small choice
+                        change someone's life?
+                        <br><br>
+                        Are we all
+                        in a connected system?
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3 data-lang="ko">💭 정의</h3>
+                    <h3 data-lang="en" style="display: none;">💭 Justice</h3>
+                    <p data-lang="ko">
+                        옳고 그름이
+                        절대적일까?
+                        <br><br>
+                        그렇지 않다면,
+                        무엇을 기준으로 살아야 할까?
+                    </p>
+                    <p data-lang="en" style="display: none;">
+                        Is right and wrong
+                        truly absolute?
+                        <br><br>
+                        If it changes with context,
+                        what guides us?
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3 data-lang="ko">🎯 의미</h3>
+                    <h3 data-lang="en" style="display: none;">🎯 Meaning</h3>
+                    <p data-lang="ko">
+                        의미를 찾는가,
+                        아니면 만드는가?
+                        <br><br>
+                        그것은 내 안에서
+                        나올까, 밖에서 올까?
+                    </p>
+                    <p data-lang="en" style="display: none;">
+                        Do we find meaning
+                        or create it?
+                        <br><br>
+                        Does it come from within
+                        or without?
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3 data-lang="ko">🌱 성장</h3>
+                    <h3 data-lang="en" style="display: none;">🌱 Growth</h3>
+                    <p data-lang="ko">
+                        성장의 멈춤은
+                        죽음일까?
+                        <br><br>
+                        아니면 평온함의 다른 이름일까?
+                        우린 알 수 있을까?
+                    </p>
+                    <p data-lang="en" style="display: none;">
+                        Is stagnation
+                        truly death?
+                        <br><br>
+                        Or a form of peace?
+                        Is there an answer?
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="container" id="contact">
+            <div class="contact-section">
+                <h2 data-lang="ko">연결하기</h2>
+                <h2 data-lang="en" style="display: none;">Connect</h2>
+
+                <p class="contact-subtitle" data-lang="ko">
+                    당신의 생각이 궁금합니다.
+                    <br>같은 밤하늘 아래 함께 생각을 나누고 싶습니다.
+                </p>
+                <p class="contact-subtitle" data-lang="en" style="display: none;">
+                    I'm curious about your thoughts.
+                    <br>I'd like to share ideas together under the same night sky.
+                </p>
+
+                <div class="contact-email">wldyd775@gmail.com</div>
+
+                <p style="font-size: 0.95rem; margin-top: 1.5rem; opacity: 0.9; position: relative; z-index: 2;" data-lang="ko">
+                    다양한 방법으로 연락해주세요<br>
+                    <span style="font-size: 0.9rem; margin-top: 0.5rem; display: block; opacity: 0.85;">
+                        Email • Phone • LinkedIn • GitHub
+                    </span>
+                </p>
+                <p style="font-size: 0.95rem; margin-top: 1.5rem; opacity: 0.9; position: relative; z-index: 2; display: none;" data-lang="en">
+                    Get in touch in any way that works for you<br>
+                    <span style="font-size: 0.9rem; margin-top: 0.5rem; display: block; opacity: 0.85;">
+                        Email • Phone • LinkedIn • GitHub
+                    </span>
+                </p>
+
+                <a href="mailto:wldyd775@gmail.com" class="contact-btn" data-lang="ko">📧 메시지 보내기</a>
+                <a href="mailto:wldyd775@gmail.com" class="contact-btn" data-lang="en" style="display: none;">📧 Send Email</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p data-lang="ko">© 2024 정지용 | Always thinking, always wondering</p>
+        <p data-lang="en" style="display: none;">© 2024 Ji-Yong Jung | Always thinking, always wondering</p>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+
+        themeToggle.addEventListener('click', () => {
+            document.body.style.filter = document.body.style.filter === 'invert(1)' ? 'invert(0)' : 'invert(1)';
+        });
+
+        const langBtns = document.querySelectorAll('.lang-btn');
+        const savedLang = localStorage.getItem('language') || 'ko';
+
+        if (savedLang === 'en') {
+            document.body.classList.add('lang-en');
+            langBtns.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === 'en');
+            });
+        }
+
+        langBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.dataset.lang;
+                document.body.classList.toggle('lang-en', lang === 'en');
+                langBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                localStorage.setItem('language', lang);
+            });
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('fade-in');
+            observer.observe(section);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
